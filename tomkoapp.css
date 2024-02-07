@@ -13,6 +13,7 @@ input{
 button{
     border: 10px;
     outline: solid 1px;
+    margin-top: 20px;
 }
 
 p {
@@ -26,4 +27,17 @@ p {
     width: 20%;
     margin: auto;
     margin-top: 38px;
+}
+
+h2{
+    color:blue;
+}
+
+.account_details{
+    text-align: right;
+    margin-right: 20px;
+}
+
+img{
+    margin: 20px;
 }
