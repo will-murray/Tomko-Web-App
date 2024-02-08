@@ -9,12 +9,14 @@ input{
     border: 10px;
     outline: solid 1px;
     width: 17%;
+    font-family: Helvetica;
 }
 
 button{
     border: 10px;
     outline: solid 1px;
     margin-top: 20px;
+    font-family: Helvetica;
 }
 
 p {
@@ -31,6 +33,7 @@ p {
 }
 
 h2{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     color:blue;
 }
 
@@ -41,4 +44,31 @@ h2{
 
 img{
     margin: 20px;
+}
+
+h3{
+    font-family: Helvetica;
+    color: rgb(91, 13, 13);
+    font-size: 150%
+}
+
+.date{
+    text-align: center;
+    background-color: rgb(182, 209, 181);
+    width: 80%;
+    margin: auto;
+    border-radius: 12px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+.node{
+    text-align: center;
+    background-color: rgb(182, 209, 181);
+    width: 80%;
+    margin: auto;
+    margin-bottom: 5px;
+    border-radius: 5px;
+    padding-top: 5px;
+    padding-bottom: 25px;
 }
