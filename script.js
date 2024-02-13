@@ -1,9 +1,15 @@
 // Select all elements with class "node"
 const nodes = document.querySelectorAll('.node');
 
-// Loop through each node and change its background color
+// Loop through each node and add event listeners for hover
 nodes.forEach(node => {
-    node.style.backgroundColor = getRandomColor();
+    node.addEventListener('mouseenter', () => {
+        node.style.backgroundColor = getRandomColor();
+    });
+
+    node.addEventListener('mouseleave', () => {
+        node.style.backgroundColor = ''; // Reset to default background color
+    });
 });
 
 // Function to generate random color
