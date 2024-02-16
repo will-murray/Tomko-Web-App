@@ -25,6 +25,36 @@
 
         <h2>HOME > TIME CARD</h2>
 
+        <div id="pay_period" class="node">
+            <h3>Select Pay Period</h3>
+            <select class="PayPeriod" name="ChoosePayPeriod">
+                <option value="Pay Period 1">Pay Period 1</option>
+                <option value="Pay Period 2">Pay Period 2</option>
+                <option value="Pay Period 3">Pay Period 3</option>
+                <option value="Pay Period 4">Pay Period 4</option>
+                <option value="Pay Period 5">Pay Period 5</option>
+                <option value="Pay Period 6">Pay Period 6</option>
+                <option value="Pay Period 7">Pay Period 7</option>
+                <option value="Pay Period 8">Pay Period 8</option>
+                <option value="Pay Period 9">Pay Period 9</option>
+                <option value="Pay Period 10">Pay Period 10</option>
+                <option value="Pay Period 11">Pay Period 11</option>
+                <option value="Pay Period 12">Pay Period 12</option>
+                <option value="Pay Period 13">Pay Period 13</option>
+                <option value="Pay Period 14">Pay Period 14</option>
+                <option value="Pay Period 15">Pay Period 15</option>
+                <option value="Pay Period 16">Pay Period 16</option>
+                <option value="Pay Period 17">Pay Period 17</option>
+                <option value="Pay Period 18">Pay Period 18</option>
+                <option value="Pay Period 19">Pay Period 19</option>
+                <option value="Pay Period 20">Pay Period 20</option>
+                <option value="Pay Period 21">Pay Period 21</option>
+                <option value="Pay Period 22">Pay Period 22</option>
+                <option value="Pay Period 23">Pay Period 23</option>
+                <option value="Pay Period 24">Pay Period 24</option>
+            </select>
+        </div>
+
         <div id="date" class="node">
             <h3>Date</h3>
             <input type="text" id="input-box" placeholder="Enter Month Here">
@@ -171,10 +201,18 @@
             <br>
         </div>
 
+        <div id="err_time" class="node">
+            <h3>Hours - ERR Time</h3>
+            <input type="number" id="input-box" placeholder="Enter Number Here" min="0" max="12">
+            <br>
+        </div>
 
-        <h3>ERR Time (?)</h3>
-        <input type="number" id="input-box" placeholder="Enter Number Here" min="0" max="12">
-        <br>
+
+        <div id="total_hrs" class="node">
+            <h3>Total Hours</h3>
+            <input type="number" id="input-box" placeholder="Enter Number Here" min="0" max="12">
+            <br>
+        </div>
 
         <button>Submit</button>
 
