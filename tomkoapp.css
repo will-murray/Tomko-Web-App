@@ -63,13 +63,15 @@ h3{
 }
 
 .node{
-    text-align: center;
     background-color: rgb(182, 209, 181);
-    width: 80%;
+    width: 60%;
     margin: auto;
     margin-bottom: 5px;
     border-radius: 5px;
     padding-top: 5px;
     padding-bottom: 25px;
 }
+<<<<<<< HEAD
+=======
 
+>>>>>>> refs/remotes/origin/main
