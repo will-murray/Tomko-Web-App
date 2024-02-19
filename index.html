@@ -8,18 +8,28 @@
     body {
         background-color: #232F3E;
         }
-    label, button {
-        color: #FF9900;
-        font-family: Arial, Helvetica, sans-serif;
+    
+    
+    #callAPI{
+
+        background-color: cornflowerblue;
+    }
+    #signuptitle{
+        background-color: plum;
+
+        
+    }
+    .formbox{
+        font-family: monospace;
         font-size: 20px;
-        margin-left: 40px;
-        }
-     input {
-        color: #232F3E;
-        font-family: Arial, Helvetica, sans-serif;
-        font-size: 20px;
-        margin-left: 20px;
-        }
+        display: flex;
+        flex-flow:column;
+        margin: 50px  50px  50px  50px ;
+        padding: 15px  15px  15px  15px;
+
+
+    }
+
     </style>
     <script>
         // define the callAPI function that takes a first name and last name as parameters
@@ -38,21 +48,46 @@
                 redirect: 'follow'
             };
             // make API call with parameters and use promises to get response
-            fetch("https://sjvs67w880.execute-api.us-west-2.amazonaws.com/dev", requestOptions)
+            fetch("https://sjvs67w880.execute-api.us-west-2.amazonaws.com/dev/", requestOptions)
             .then(response => response.text())
             .then(result => alert(JSON.parse(result).body))
             .catch(error => console.log('error', error));
         }
+
+        const signUp = (email, name, password) => {
+            const client = new CognitoIdentityProviderClient({});
+
+            const command = new SignUpCommand({
+                ClientId: clientId,
+                Username: username,
+                Password: password,
+                UserAttributes: [{ Name: "email", Value: email }],
+            });
+
+            return client.send(command);
+        };
     </script>
+
+
 </head>
 <body>
-    <form>
-        <label>First Name :</label>
-        <input type="text" id="fName">
-        <label>Last Name :</label>
-        <input type="text" id="lName">
-        <!-- set button onClick method to call function we defined passing input values as parameters -->
-        <button type="button" onclick="callAPI(document.getElementById('fName').value,document.getElementById('lName').value)">Call API</button>
-    </form>
+    <div id = "callAPI", class="formbox">
+        <h1> Call Api Form</h1>
+
+        <form class = 'form'>
+            <label>Input 1 :</label>
+            <input type="text" id="fName">
+            <label>Input 2 :</label>
+            <input type="text" id="lName">
+            <!-- set button onClick method to call function we defined passing input values as parameters -->
+            <button type="button" onclick="callAPI(document.getElementById('fName').value,document.getElementById('lName').value)">Call API</button>
+        </form>
+
+    </div>
+    
+
+
+    
+
 </body>
 </html>
