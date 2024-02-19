@@ -4,35 +4,14 @@
     <meta charset="UTF-8">
     <title>Hello World</title>
     <!-- Add some CSS to change client UI -->
-    <style>
-    body {
-        background-color: #232F3E;
-        }
     
-    
-    #callAPI{
 
-        background-color: cornflowerblue;
-    }
-    #signuptitle{
-        background-color: plum;
-
-        
-    }
-    .formbox{
-        font-family: monospace;
-        font-size: 20px;
-        display: flex;
-        flex-flow:column;
-        margin: 50px  50px  50px  50px ;
-        padding: 15px  15px  15px  15px;
-
-
-    }
-
-    </style>
+    <link rel="stylesheet" href="css/root.css">
     <script>
 
+        var open_daily_logs = ()=>{
+            window.open("dailytrackerform.html")
+        }
         // define the callAPI function that takes a first name and last name as parameters
         var callAPI = (firstName,lastName)=>{
             // instantiate a headers object
@@ -71,7 +50,11 @@
 
 
 </head>
+
+
 <body>
+
+
     <div id = "callAPI", class="formbox">
         <h1> Call Api Form</h1>
 
@@ -84,11 +67,11 @@
             <button type="button" onclick="callAPI(document.getElementById('fName').value,document.getElementById('lName').value)">Call API</button>
         </form>
 
+        <button class="formbox" onclick="open_daily_logs()">Open Daily Logs</button>
     </div>
     
 
-
-    
-
 </body>
+
+
 </html>
