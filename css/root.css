@@ -1,11 +1,17 @@
 body {
     background-color: #232F3E;
+    padding-left: 20%;
+    padding-right: 20%;
+
     }
 
 
 #callAPI{
 
     background-color: cornflowerblue;
+    border-color: black;
+    border-style: solid;
+    border-radius: 10px;
 }
 #signuptitle{
     background-color: plum;
@@ -14,7 +20,6 @@ body {
 }
 input{
     height: 30px;
-    width: 200px;
     border-style: black;
     border: white;
     border-radius: 10px;
@@ -23,6 +28,19 @@ input{
 
 .formbox{
     width: 400px;
+    font-family: monospace;
+    font-size: 20px;
+    display: flex;
+    flex-flow:column;
+    padding: 15px  15px  15px  15px;
+
+
+}
+
+
+
+.main{
+    width: 800px;
     font-family: monospace;
     font-size: 20px;
     display: flex;
