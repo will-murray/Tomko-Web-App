@@ -1,0 +1,45 @@
+{
+  "auth": {
+    "tomkowebapp": {
+      "customAuth": false,
+      "dependsOn": [],
+      "providerPlugin": "awscloudformation",
+      "service": "Cognito",
+      "serviceType": "imported"
+    }
+  },
+  "parameters": {
+    "AMPLIFY_auth_tomkowebapp_nativeClientId": {
+      "usedBy": [
+        {
+          "category": "auth",
+          "resourceName": "tomkowebapp"
+        }
+      ]
+    },
+    "AMPLIFY_auth_tomkowebapp_userPoolId": {
+      "usedBy": [
+        {
+          "category": "auth",
+          "resourceName": "tomkowebapp"
+        }
+      ]
+    },
+    "AMPLIFY_auth_tomkowebapp_userPoolName": {
+      "usedBy": [
+        {
+          "category": "auth",
+          "resourceName": "tomkowebapp"
+        }
+      ]
+    },
+    "AMPLIFY_auth_tomkowebapp_webClientId": {
+      "usedBy": [
+        {
+          "category": "auth",
+          "resourceName": "tomkowebapp"
+        }
+      ]
+    }
+  }
+}

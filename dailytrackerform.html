@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Job Time Tracker</title>
+</head>
+<body>
+
+<h1>Job Time Tracker</h1>
+
+<form id="jobForm">
+    <label for="jobsite">ID:</label>
+    <input type="text" id="ID" name="ID" required><br><br>
+
+    <label for="jobsite">Job Site:</label>
+    <input type="text" id="jobsite" name="jobsite" required><br><br>
+
+    <label for="hoursWorked">Hours Worked:</label>
+    <input type="number" id="hoursWorked" name="hoursWorked" min="0" step="0.5" required><br><br>
+
+    <label for="startTime">Start Time:</label>
+    <input type="time" id="startTime" name="startTime" required><br><br>
+
+    <label for="endTime">End Time:</label>
+    <input type="time" id="endTime" name="endTime" required><br><br>
+
+    <button type="submit">Submit</button>
+</form>
+
+<script>
+    document.getElementById("jobForm").addEventListener("submit", function(event) {
+        event.preventDefault(); // Prevent default form submission
+        
+        // Retrieve form values
+        const ID = document.getElementById("ID").value;
+        const jobsite = document.getElementById("jobsite").value;
+        const hoursWorked = document.getElementById("hoursWorked").value;
+        const startTime = document.getElementById("startTime").value;
+        const endTime = document.getElementById("endTime").value;
+        
+        submitform(ID,jobsite,hoursWorked,startTime,endTime)
+        
+    });
+
+    function submitform(iD,jobsite, hoursWorked, startTime,endTime){
+            console.log("here")
+            // instantiate a headers object
+            var myHeaders = new Headers();
+            // add content type header to object
+            myHeaders.append("Content-Type", "application/json");
+            // using built in JSON utility package turn object to string and store in a variable
+            var raw = JSON.stringify(
+                {"ID" :iD ,"jobsite":jobsite, "hoursWorked":hoursWorked, "startTime":startTime, "endtime":endTime}
+            );
+            // create a JSON object with parameters for API call and store in a variable
+            var requestOptions = {
+                method: 'POST',
+                headers: myHeaders,
+                body: raw,
+                redirect: 'follow'
+            };
+            // make API call with parameters and use promises to get response
+            fetch("https://sjvs67w880.execute-api.us-west-2.amazonaws.com/dev/authenticate_user", requestOptions)
+            .then(response => response.text())
+            .then(result => alert(JSON.parse(result).body))
+            .catch(error => console.log('error', error));
+        }
+</script>
+
+</body>
+</html>
