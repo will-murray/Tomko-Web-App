@@ -9,6 +9,25 @@
     <link rel="stylesheet" href="css/root.css">
     <script>
 
+        function setWrapperWidth() {
+            let maxWidth = 1000; // Maximum width for the wrapper div
+            let wrapper = document.getElementById("wrapper");
+
+            // Calculate the available width for the wrapper div
+            let availableWidth = Math.min(maxWidth, window.innerWidth);
+            
+            // Set the width of the wrapper div
+            wrapper.style.width = availableWidth + "px";
+            
+            // Calculate left and right margins to center the wrapper div
+            let horizontalMargin = (window.innerWidth - availableWidth) / 2;
+
+            // Set the left and right margins of the wrapper div
+            wrapper.style.marginLeft = horizontalMargin + "px";
+            wrapper.style.marginRight = horizontalMargin + "px";
+        }
+        window.onload = setWrapperWidth;
+        window.addEventListener("resize", setWrapperWidth);
         var open_daily_logs = ()=>{
             window.open("dailytrackerform.html")
         }
@@ -53,24 +72,40 @@
 
 
 <body>
+    <div id = "wrapper">
 
-
-    <div id = "callAPI", class="main">
-        <h1> Call Api Form</h1>
-
-        <form class = 'form'>
-            <label>Input 1 :</label>
-            <input type="text" id="fName">
-            <label>Input 2 :</label>
-            <input type="text" id="lName">
-            <!-- set button onClick method to call function we defined passing input values as parameters -->
-            <button type="button" onclick="callAPI(document.getElementById('fName').value,document.getElementById('lName').value)">Call API</button>
-        </form>
-
-        <button id = "dailylogbtn" class="formbox" onclick="open_daily_logs()">Open Daily Logs</button>
-    </div>
+        <div id = "header">
+            <img src="imgs/logo.png" width="20%">
+        </div>
+        <div id = "content">
+            <div class = "formheader">
+                <h1> Call Api Form</h1>
+            </div>
     
+            <form class = 'formbox'>
+                <div class = 'inputbox'>
+                    <label>Input 1 :</label>
+                    <input type="text" id="fName">
+                </div>
+                
+                <div class = 'inputbox'>
+                    <label>Input 2 :</label>
+                    <input type="text" id="lName">
+                </div>
+                
+                <!-- set button onClick method to call function we defined passing input values as parameters -->
+                
+            </form>
+            <div class = "btnbox">
+                <button type="button" onclick="callAPI(document.getElementById('fName').value,document.getElementById('lName').value)">Call API</button>
+            </div>
 
+            <div class = "btnbox">
+                <button id = "dailylogbtn" class="formbox" onclick="open_daily_logs()">Open Daily Logs</button>
+            </div>
+        </div>
+
+    </div>
 </body>
 
 
