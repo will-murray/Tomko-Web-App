@@ -10,68 +10,80 @@
 
     <script>
 
-        function setWrapperWidth() {
-            let maxWidth = 1000; // Maximum width for the wrapper div
-            let wrapper = document.getElementById("wrapper");
+    function setWrapperWidth() {
+        let maxWidth = 1000; // Maximum width for the wrapper div
+        let wrapper = document.getElementById("wrapper");
 
-            // Calculate the available width for the wrapper div
-            let availableWidth = Math.min(maxWidth, window.innerWidth);
-            
-            // Set the width of the wrapper div
-            wrapper.style.width = availableWidth + "px";
-            
-            // Calculate left and right margins to center the wrapper div
-            let horizontalMargin = (window.innerWidth - availableWidth) / 2;
+        let availableWidth = Math.min(maxWidth, window.innerWidth);
+        wrapper.style.width = availableWidth + "px";
+        let horizontalMargin = (window.innerWidth - availableWidth) / 2;
 
-            // Set the left and right margins of the wrapper div
-            wrapper.style.marginLeft = horizontalMargin + "px";
-            wrapper.style.marginRight = horizontalMargin + "px";
+        wrapper.style.marginLeft = horizontalMargin + "px";
+        wrapper.style.marginRight = horizontalMargin + "px";
+    }
+    window.onload = setWrapperWidth;
+    window.addEventListener("resize", setWrapperWidth);
+
+    let button_mouseover = () => {
+        let btn = document.getElementById("submit_btn")
+        btn.style.backgroundColor = "yellow"
+    }
+    let button_mouseout = () =>{
+        let btn = document.getElementById("submit_btn")
+        btn.style.backgroundColor = "white"
+    }
+
+    let submitform = (id,jobsite,hoursWorked,startTime,endTime,date,siteTime,travelTime,shopTime,errTime) =>{
+
+
+            // instantiate a headers object
+            let myHeaders = new Headers();
+            // add content type header to object
+            myHeaders.append("Content-Type", "application/json");
+            // using built in JSON utility package turn object to string and store in a letiable
+            let raw = JSON.stringify({
+                    "ID": String(id),
+                    "jobsite": String(jobsite),
+                    "hoursWorked": String(hoursWorked),
+                    "startTime": String(startTime),
+                    "endTime": String(endTime),
+                    "date" : date,
+                    "siteTime" : String(siteTime),
+                    "travelTime" : String(travelTime),
+                    "shopTime" : String(shopTime),
+                    "errTime" : String(errTime),
+
+            });
+            console.log("raw = ", raw)
+            //create a JSON object with parameters for API call and store in a letiable
+            let requestOptions = {
+                method: 'POST',
+                headers: myHeaders,
+                body: raw,
+                redirect: 'follow'
+            };
+            // make API call with parameters and use promises to get response
+            fetch("https://sjvs67w880.execute-api.us-west-2.amazonaws.com/dev/insert_daylog", requestOptions)
+            .then(response => response.text())
+            .then(result => alert(JSON.parse(result).body))
+            .catch(error => alert('error', error));
+        
         }
-        window.onload = setWrapperWidth;
-        window.addEventListener("resize", setWrapperWidth);
 
-        let button_mouseover = () => {
-            let btn = document.getElementById("submit_btn")
-            btn.style.backgroundColor = "yellow"
-        }
-        let button_mouseout = () =>{
-            let btn = document.getElementById("submit_btn")
-            btn.style.backgroundColor = "white"
-        }
+    function getTodaysDate() {
+        const today = new Date();
+        const year = today.getFullYear();
+        const month = String(today.getMonth() + 1).padStart(2, '0');
+        const day = String(today.getDate()).padStart(2, '0');
+        return `${year}-${month}-${day}`;
+    }
 
-        let submitform = (id,jobsite,hoursWorked,startTime,endTime) =>{
-    
-                if(id == "" || jobsite == "" || hoursWorked == "" || startTime == "" || endTime == ""){
-                    alert("missing one or more values");
-                    return
-                }
-                // instantiate a headers object
-                let myHeaders = new Headers();
-                // add content type header to object
-                myHeaders.append("Content-Type", "application/json");
-                // using built in JSON utility package turn object to string and store in a letiable
-                let raw = JSON.stringify({
-                        "ID": String(id),
-                        "jobsite": String(jobsite),
-                        "hoursWorked": String(hoursWorked),
-                        "startTime": String(startTime),
-                        "endTime": String(endTime)
-                });
-                console.log("raw = ", raw)
-                //create a JSON object with parameters for API call and store in a letiable
-                let requestOptions = {
-                    method: 'POST',
-                    headers: myHeaders,
-                    body: raw,
-                    redirect: 'follow'
-                };
-                // make API call with parameters and use promises to get response
-                fetch("https://sjvs67w880.execute-api.us-west-2.amazonaws.com/dev/insert_daylog", requestOptions)
-                .then(response => response.text())
-                .then(result => alert(JSON.parse(result).body))
-                .catch(error => alert('error', error));
-            
-            }
+    //Fill the input with today's date when the button is clicked
+    let filldate = () => {
+        const dateInput = document.getElementById("dateInput");
+        dateInput.value = getTodaysDate();
+    }
+
     </script>
 </head>
 
@@ -112,7 +124,34 @@
                         <label for="endTime">End Time:</label>
                         <input type="time" id="endTime" name="endTime" required>
                     </div>
+
+                    <div class = "inputbox">
+
+                        <label for="dateInput">Select Date:</label>
+                        <input type="date" id="dateInput">
+                        <button id="fillDateBtn" onclick="filldate()">Fill Today's Date</button>
+                    </div>
                     
+
+                    <div class="inputbox">
+                        <label for="sitetime"> Site Time:</label>
+                        <input type="number" id="sitetime" name = "sitetime">
+                    </div>
+            
+                    <div class="inputbox">
+                        <label for="traveltime">Travel Time:</label>
+                        <input type="number" id="traveltime" name = "traveltime">
+                    </div>
+            
+                    <div class="inputbox">
+                        <label for="shoptime">Shop Time:</label>
+                        <input type="number" id="shoptime" name = "shoptime">
+                    </div>
+            
+                    <div  class="inputbox">
+                        <label for="errtime">ERR Time:</label>
+                        <input type="number" id="errtime" name = "errtime">
+                    </div>
                 </form>
             </div>
             <div class = "btnbox">
@@ -122,7 +161,12 @@
                         document.getElementById('jobsite').value,
                         document.getElementById('hoursWorked').value,
                         document.getElementById('startTime').value,
-                        document.getElementById('endTime').value
+                        document.getElementById('endTime').value,
+                        document.getElementById('dateInput').value,
+                        document.getElementById('sitetime').value,
+                        document.getElementById('traveltime').value,
+                        document.getElementById('shoptime').value,
+                        document.getElementById('errtime').value
                     )"
                     onmouseover="button_mouseover()"
                     onmouseout= "button_mouseout()"

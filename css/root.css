@@ -3,7 +3,6 @@ body {
     flex-flow: column;
     margin-left: 2%;
     margin-right: 2%;
-    background-image: url('/imgs/cow.jpg');
 
     }
 
@@ -67,4 +66,9 @@ button{
     margin: 1% 1% 1% 1%;
     padding: 1% 1% 1% 1%
     
+}
+
+input{
+    border-radius: 5px;
+    height: 30px;
 }
