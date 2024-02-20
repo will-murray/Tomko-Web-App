@@ -1,0 +1,30 @@
+body {
+    display: flex;
+    flex-flow: column;
+    }
+
+
+#header{
+    background-color: white;
+    padding: 1%;
+    border-bottom: solid;
+    margin-bottom: 1%;
+}
+
+.taskbox{
+    background-color:darkslateblue;
+    border-style: solid;
+    margin-top: 5px;
+    display: flex;
+    flex-flow: column;
+    justify-items: center;
+    padding: 2% 2% 2% 2%;
+
+}
+
+.taskbox button{
+    display: flex;
+    flex-flow: column;
+    padding: 2% 2% 2% 2%;
+}
+

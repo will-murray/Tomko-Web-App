@@ -1,0 +1,30 @@
+.formcontent{
+
+    background-color: white;
+    border-color: black;
+    border-style: solid;
+    border-radius: 10px;
+    margin: 1% 1% 1% 1%;;
+}
+
+.formbox{
+    display:grid;
+    grid-template-columns: auto;
+    padding: 2% 2% 2% 2%;
+
+}
+
+.formheader{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.inputbox{
+    display: flex;
+    flex-flow: column;
+    margin-top: 1%;
+    margin-bottom: 1%;
+
+}
